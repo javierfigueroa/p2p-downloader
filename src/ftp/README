@@ -1,0 +1,30 @@
+Instructions to run the FTPClient - FTPServer demo.
+
+SERVER:
+
+Run FTP Server:
+	 java -jar ftpserver.jar <port>
+
+CLIENT:
+
+Run FTP Client:
+	java -jar ftpclient.jar <server host> <server port>
+	
+You'll be asked for a username and password. 
+These are for logging purposes and the current implementation does not provide any security, therefore use any word for username and for password
+
+You'll now be able to execute only 3 commands in the following manner:
+
+>dir
+Will show the current directory files. Equivalent to LIST command
+
+>get <filename>
+Will attempt to download the specified filename. Equivalent to RETR command
+
+>upload <filename>
+Will attempt to upload the specified filename. Equivalent to STOR command
+
+NOTES:
+
+- The client and server use a separate connection for the RETR and the STOR commands 
+		 
