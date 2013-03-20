@@ -6,19 +6,24 @@ This project creates a peer-to-peer network for file downloading. It slightly re
 Each peer is both a server and a client. As a server, it offers a file that it wants to share. It registers the file with the tracker. The tracker knows all files to be shared and which peer each file is located at.
 As a client, a peer may register with the tracker for downloading a file. The tracker knows, for each shared file, which peers want to download the file. These peers form a downloading group. The tracker informs each peer of a downloading group about other group members as well as the file owner. Each peer must establish a TCP connection with the file owner and additional TCP connections or UDP with up to three peers in the same downloading group.
 During file download, the owner breaks the file into chunks of 100 KB. It will send each chunk to one of the peers in the downloading group. The peers then communicate amongst themselves. Each peer finds out which neighbors have chunks that it does not have, and downloads those chunks from these neighbors. This process repeats until all peers have all chunks, from which the entire file is reconstructed and stored locally.
+<br/>
+<br/>
 Tracker:
+<br/>
 It has the following functionalities:
+<br/>
 1. Keep track of the list of online peers, the files they share, and the
-downloading group for each file.
+downloading group for each file.<br/>
 2. Inform each file owner of its downloading group and inform each peer of
 other members in the same downloading group.
-Commands supported:
-1. register-peer <filename>: allow a peer to register a shared file with the
-tracker.
-2. list : allow a peer to query for the list of shared files.
-3. register-group <filename> : allow a peer to register with the tracker for
-downloading a file.
-Peer:
+Commands supported:<br/>
+a. register-peer <filename>: allow a peer to register a shared file with the
+tracker.<br/>
+b. list : allow a peer to query for the list of shared files.<br/>
+c. register-group <filename> : allow a peer to register with the tracker for
+downloading a file.<br/>
+<br/>
+Peer:<br/>
 Each peer supports two kinds of functionalities: uploading as a server and downloading as a client . When a peer is started, the information about the tracker is
 supplied in the command line. For example, “peer sand.cise.ufl.edu 5150”, where the tracker is running at sand.cise.ufl.edu, port 5150.
 When a peer is up, the user may type a command in the console window, “register- peer <filename>”, which will register a shared file with the tracker. The user may then type a command, “list”, to see which files are available. If the user wants a file, he or she types “register-group <filename>” to join the downloading group.
