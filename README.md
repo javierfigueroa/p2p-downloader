@@ -2,6 +2,7 @@ Computer Networks Class Project
 
 Description:
 This project creates a peer-to-peer network for file downloading. It slightly resembles Bit-torrent. There are two distinct pieces of software – Peer and Tracker.
+<br />
 Each peer is both a server and a client. As a server, it offers a file that it wants to share. It registers the file with the tracker. The tracker knows all files to be shared and which peer each file is located at.
 As a client, a peer may register with the tracker for downloading a file. The tracker knows, for each shared file, which peers want to download the file. These peers form a downloading group. The tracker informs each peer of a downloading group about other group members as well as the file owner. Each peer must establish a TCP connection with the file owner and additional TCP connections or UDP with up to three peers in the same downloading group.
 During file download, the owner breaks the file into chunks of 100 KB. It will send each chunk to one of the peers in the downloading group. The peers then communicate amongst themselves. Each peer finds out which neighbors have chunks that it does not have, and downloads those chunks from these neighbors. This process repeats until all peers have all chunks, from which the entire file is reconstructed and stored locally.
